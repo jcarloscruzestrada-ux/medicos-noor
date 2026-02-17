@@ -4,406 +4,183 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Noor Clinic — Alta de Médicos</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --azul-noor:    #0a2d6e;
-    --azul-medio:   #1650b4;
-    --azul-claro:   #2d7dd2;
-    --azul-suave:   #ddeeff;
-    --azul-hielo:   #f0f6ff;
-    --dorado:       #c9a96e;
-    --dorado-dark:  #a07535;
-    --texto:        #0d1f3c;
-    --gris:         #6b7a99;
-    --blanco:       #ffffff;
-    --borde:        #c4d4f0;
-    --exito:        #1a7a4a;
-    --error:        #c0392b;
+    --azul-noor:#0a2d6e; --azul-m:#1650b4; --azul-c:#2d7dd2;
+    --azul-suave:#ddeeff; --hielo:#f0f6ff; --borde:#c4d4f0;
+    --dorado:#c9a96e; --dorado-d:#a07535;
+    --texto:#0d1f3c; --gris:#6b7a99; --blanco:#ffffff;
+    --exito:#1a7a4a; --error:#c0392b;
   }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',sans-serif;background:linear-gradient(160deg,#e8f0ff 0%,#f5f8ff 50%,#eef4ff 100%);min-height:100vh;color:var(--texto)}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: linear-gradient(160deg, #e8f0ff 0%, #f5f8ff 50%, #eef4ff 100%);
-    min-height: 100vh;
-    color: var(--texto);
-  }
+  header{background:var(--azul-noor);position:relative;overflow:hidden}
+  header::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 100% at 90% 50%,rgba(22,80,180,.45) 0%,transparent 65%),radial-gradient(ellipse 40% 70% at 5% 0%,rgba(45,125,210,.25) 0%,transparent 55%)}
+  header::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:40px 40px}
+  .header-inner{max-width:1060px;margin:0 auto;padding:32px 40px 28px;display:flex;align-items:center;gap:24px;position:relative;z-index:1}
+  .logo-mark{width:68px;height:68px;border-radius:14px;flex-shrink:0;background:rgba(255,255,255,.10);border:1.5px solid rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.15)}
+  .logo-mark svg{width:36px;height:36px}
+  .header-copy h1{font-family:'Cormorant Garamond',serif;font-size:1.95rem;font-weight:500;color:#fff;letter-spacing:.4px;line-height:1.1}
+  .header-copy p{margin-top:5px;font-size:.72rem;color:rgba(255,255,255,.5);letter-spacing:1.2px;text-transform:uppercase}
+  .header-pill{margin-left:auto;background:rgba(201,169,110,.18);border:1px solid rgba(201,169,110,.40);border-radius:8px;padding:10px 18px;text-align:right}
+  .header-pill span{display:block;font-size:.65rem;color:rgba(255,255,255,.45);letter-spacing:1px;text-transform:uppercase}
+  .header-pill strong{font-size:.82rem;color:var(--dorado);font-weight:500}
 
-  /* ── HEADER ── */
-  header {
-    background: var(--azul-noor);
-    position: relative;
-    overflow: hidden;
-  }
-  header::before {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 70% 100% at 90% 50%, rgba(22,80,180,.45) 0%, transparent 65%),
-      radial-gradient(ellipse 40% 70% at 5% 0%,   rgba(45,125,210,.25) 0%, transparent 55%);
-    pointer-events: none;
-  }
-  /* decorative grid lines */
-  header::after {
-    content: '';
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-  }
-  .header-inner {
-    max-width: 1060px;
-    margin: 0 auto;
-    padding: 32px 40px 28px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    position: relative;
-    z-index: 1;
-  }
-  .logo-mark {
-    width: 68px; height: 68px;
-    border-radius: 14px;
-    background: rgba(255,255,255,.10);
-    border: 1.5px solid rgba(255,255,255,.28);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    box-shadow: 0 6px 28px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.15);
-  }
-  .logo-mark svg { width: 36px; height: 36px; }
-  .header-copy { flex: 1; }
-  .header-copy h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.95rem; font-weight: 500;
-    color: var(--blanco); letter-spacing: .4px; line-height: 1.1;
-  }
-  .header-copy p {
-    margin-top: 5px;
-    font-size: .72rem; font-weight: 400;
-    color: rgba(255,255,255,.5);
-    letter-spacing: 1.2px; text-transform: uppercase;
-  }
-  .header-pill {
-    background: rgba(201,169,110,.18);
-    border: 1px solid rgba(201,169,110,.40);
-    border-radius: 8px;
-    padding: 10px 18px;
-    text-align: right;
-  }
-  .header-pill span { display: block; font-size: .65rem; color: rgba(255,255,255,.45); letter-spacing: 1px; text-transform: uppercase; }
-  .header-pill strong { font-size: .82rem; color: var(--dorado); font-weight: 500; }
+  .stepper-wrap{background:rgba(10,45,110,.96);border-top:1px solid rgba(255,255,255,.07);padding:0 40px}
+  .stepper{max-width:1060px;margin:0 auto;display:flex}
+  .s-tab{flex:1;padding:13px 8px;text-align:center;position:relative;transition:all .3s}
+  .s-tab .s-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:.68rem;font-weight:700;background:rgba(255,255,255,.10);color:rgba(255,255,255,.35);margin-bottom:4px;transition:all .3s}
+  .s-tab .s-lbl{display:block;font-size:.62rem;font-weight:600;letter-spacing:.7px;text-transform:uppercase;color:rgba(255,255,255,.3);transition:all .3s}
+  .s-tab.active .s-num{background:var(--dorado);color:var(--azul-noor)}
+  .s-tab.active .s-lbl{color:rgba(255,255,255,.85)}
+  .s-tab.done .s-num{background:var(--azul-c);color:#fff}
+  .s-tab.done .s-lbl{color:rgba(255,255,255,.5)}
+  .s-tab.active::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:48px;height:2px;background:var(--dorado);border-radius:2px}
 
-  /* ── STEPPER ── */
-  .stepper-wrap {
-    background: rgba(10,45,110,.96);
-    backdrop-filter: blur(4px);
-    border-top: 1px solid rgba(255,255,255,.07);
-    padding: 0 40px;
-  }
-  .stepper {
-    max-width: 1060px;
-    margin: 0 auto;
-    display: flex;
-  }
-  .s-tab {
-    flex: 1; padding: 13px 8px;
-    cursor: default;
-    text-align: center;
-    position: relative;
-    transition: all .3s;
-  }
-  .s-tab .s-num {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    font-size: .68rem; font-weight: 700;
-    background: rgba(255,255,255,.10);
-    color: rgba(255,255,255,.35);
-    margin-bottom: 4px;
-    transition: all .3s;
-  }
-  .s-tab .s-lbl {
-    display: block;
-    font-size: .62rem; font-weight: 600;
-    letter-spacing: .7px; text-transform: uppercase;
-    color: rgba(255,255,255,.3);
-    transition: all .3s;
-  }
-  .s-tab.active  .s-num { background: var(--dorado); color: var(--azul-noor); }
-  .s-tab.active  .s-lbl { color: rgba(255,255,255,.85); }
-  .s-tab.done    .s-num { background: var(--azul-claro); color: #fff; }
-  .s-tab.done    .s-lbl { color: rgba(255,255,255,.5); }
-  .s-tab.active::after {
-    content: '';
-    position: absolute; bottom: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 48px; height: 2px;
-    background: var(--dorado); border-radius: 2px;
-  }
+  main{max-width:820px;margin:36px auto 60px;padding:0 20px}
+  .card{background:var(--blanco);border-radius:18px;border:1px solid var(--borde);box-shadow:0 8px 48px rgba(10,45,110,.09);overflow:hidden}
 
-  /* ── MAIN ── */
-  main {
-    max-width: 820px;
-    margin: 36px auto 60px;
-    padding: 0 20px;
-  }
+  .section{display:none;padding:40px 48px;animation:upIn .35s ease}
+  .section.active{display:block}
+  @keyframes upIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-  .card {
-    background: var(--blanco);
-    border-radius: 18px;
-    border: 1px solid var(--borde);
-    box-shadow: 0 8px 48px rgba(10,45,110,.09), 0 1px 4px rgba(10,45,110,.06);
-    overflow: hidden;
-  }
+  .sec-header{margin-bottom:28px}
+  .sec-header h2{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;color:var(--azul-noor)}
+  .sec-header p{margin-top:4px;font-size:.8rem;color:var(--gris);line-height:1.5}
 
-  /* ── SECCIONES ── */
-  .section { display: none; padding: 40px 48px; animation: upIn .35s ease; }
-  .section.active { display: block; }
-  @keyframes upIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px}
+  .col-2{grid-column:1/-1}
+  .field{display:flex;flex-direction:column;gap:5px}
+  .field label{font-size:.68rem;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--azul-noor)}
+  .field label .req{color:var(--dorado);margin-left:2px}
+  .field input,.field select{font-family:'DM Sans',sans-serif;font-size:.875rem;padding:11px 14px;border:1.5px solid var(--borde);border-radius:9px;color:var(--texto);background:var(--blanco);outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none}
+  .field input:focus,.field select:focus{border-color:var(--azul-c);box-shadow:0 0 0 3px rgba(45,125,210,.11)}
+  .field input.ok{border-color:var(--exito)}
+  .field input.err,.field select.err{border-color:var(--error)}
+  .field .hint{font-size:.67rem;color:var(--gris)}
+  .field .errtxt{font-size:.67rem;color:var(--error);display:none}
+  .field input.err~.errtxt,.field select.err~.errtxt{display:block}
 
-  .sec-header { margin-bottom: 28px; }
-  .sec-header h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem; font-weight: 500;
-    color: var(--azul-noor);
-  }
-  .sec-header p {
-    margin-top: 4px;
-    font-size: .8rem; color: var(--gris); line-height: 1.5;
-  }
+  .infobox{background:var(--azul-suave);border-left:3px solid var(--azul-c);border-radius:0 8px 8px 0;padding:11px 15px;font-size:.77rem;color:var(--azul-noor);line-height:1.55;margin-bottom:22px}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--borde),transparent);margin:24px 0}
 
-  /* ── CAMPOS ── */
-  .grid   { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; }
-  .col-2  { grid-column: 1 / -1; }
+  /* ── DOCUMENTOS MEJORADOS ── */
+  .docs-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .doc-card{position:relative;border:1.5px dashed var(--borde);border-radius:12px;padding:20px 14px 16px;text-align:center;cursor:pointer;transition:all .25s;background:var(--hielo);overflow:hidden}
+  .doc-card:hover{border-color:var(--azul-c);background:rgba(45,125,210,.04)}
+  .doc-card.done{border-style:solid;border-color:var(--exito);background:rgba(26,122,74,.04)}
+  .doc-card.uploading{border-color:var(--dorado);background:rgba(201,169,110,.05);animation:pulse 1.5s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+  .doc-card input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+  .doc-card.done input[type="file"],.doc-card.uploading input[type="file"]{pointer-events:none}
+  .doc-icon{font-size:1.9rem;display:block;margin-bottom:6px}
+  .doc-tag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:20px;background:rgba(201,169,110,.15);color:#7a5523;margin-bottom:6px}
+  .doc-tag.req-live{background:rgba(192,57,43,.10);color:#c0392b}
+  .doc-name{font-size:.74rem;font-weight:600;color:var(--azul-noor);line-height:1.3;margin-bottom:4px}
+  .doc-status{font-size:.67rem;color:var(--gris);transition:color .2s;min-height:16px}
+  .doc-card.done .doc-status{color:var(--exito)}
+  .doc-card.uploading .doc-status{color:var(--dorado-d)}
 
-  .field  { display: flex; flex-direction: column; gap: 5px; }
-  .field label {
-    font-size: .68rem; font-weight: 700;
-    letter-spacing: .9px; text-transform: uppercase;
-    color: var(--azul-noor);
-  }
-  .field label .req { color: var(--dorado); margin-left: 2px; }
-  .field input,
-  .field select,
-  .field textarea {
-    font-family: 'DM Sans', sans-serif;
-    font-size: .875rem;
-    padding: 11px 14px;
-    border: 1.5px solid var(--borde);
-    border-radius: 9px;
-    color: var(--texto);
-    background: var(--blanco);
-    outline: none;
-    transition: border-color .2s, box-shadow .2s;
-    -webkit-appearance: none;
-  }
-  .field input:focus,
-  .field select:focus { border-color: var(--azul-claro); box-shadow: 0 0 0 3px rgba(45,125,210,.11); }
-  .field input.ok  { border-color: var(--exito); }
-  .field input.err { border-color: var(--error); }
-  .field .hint { font-size: .67rem; color: var(--gris); }
-  .field .errtxt { font-size: .67rem; color: var(--error); display: none; }
-  .field input.err ~ .errtxt { display: block; }
+  /* Barra de progreso por archivo */
+  .doc-progress{height:3px;background:var(--borde);border-radius:2px;margin-top:8px;overflow:hidden;display:none}
+  .doc-card.uploading .doc-progress{display:block}
+  .doc-progress-bar{height:100%;background:linear-gradient(90deg,var(--azul-c),var(--dorado));border-radius:2px;transition:width .3s;width:0%}
 
-  /* ── INFO BOX ── */
-  .infobox {
-    background: var(--azul-suave);
-    border-left: 3px solid var(--azul-claro);
-    border-radius: 0 8px 8px 0;
-    padding: 11px 15px;
-    font-size: .77rem; color: var(--azul-noor); line-height: 1.55;
-    margin-bottom: 22px;
-  }
-  .divider { height: 1px; background: linear-gradient(90deg,transparent,var(--borde),transparent); margin: 24px 0; }
+  /* Progreso global */
+  .upload-progress{background:var(--hielo);border:1px solid var(--borde);border-radius:10px;padding:14px 18px;margin-bottom:20px;display:none}
+  .upload-progress.show{display:block}
+  .up-label{font-size:.75rem;font-weight:600;color:var(--azul-noor);margin-bottom:8px;display:flex;justify-content:space-between}
+  .up-bar-wrap{height:6px;background:var(--borde);border-radius:3px;overflow:hidden}
+  .up-bar{height:100%;background:linear-gradient(90deg,var(--azul-c),var(--dorado));border-radius:3px;transition:width .4s;width:0%}
 
-  /* ── DOCUMENTOS ── */
-  .docs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .resumen-box{background:var(--hielo);border:1px solid var(--borde);border-radius:12px;padding:22px 24px;margin-bottom:20px}
+  .resumen-box h4{font-size:.68rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--gris);margin-bottom:14px}
+  .r-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--borde);font-size:.81rem}
+  .r-row:last-child{border-bottom:none}
+  .r-key{color:var(--gris)}
+  .r-val{color:var(--texto);font-weight:500;max-width:55%;text-align:right}
 
-  .doc-card {
-    position: relative;
-    border: 1.5px dashed var(--borde);
-    border-radius: 12px;
-    padding: 20px 14px 16px;
-    text-align: center;
-    cursor: pointer;
-    transition: all .25s;
-    background: var(--azul-hielo);
-    overflow: hidden;
-  }
-  .doc-card:hover { border-color: var(--azul-claro); background: rgba(45,125,210,.04); }
-  .doc-card.done  { border-style: solid; border-color: var(--exito); background: rgba(26,122,74,.04); }
-  .doc-card input[type="file"] {
-    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
-  }
-  .doc-icon { font-size: 1.9rem; display: block; margin-bottom: 6px; }
-  .doc-tag {
-    display: inline-block;
-    font-size: .58rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
-    padding: 2px 8px; border-radius: 20px;
-    background: rgba(201,169,110,.15); color: #7a5523;
-    margin-bottom: 6px;
-  }
-  .doc-tag.req-live { background: rgba(192,57,43,.10); color: #c0392b; }
-  .doc-name { font-size: .74rem; font-weight: 600; color: var(--azul-noor); line-height: 1.3; margin-bottom: 4px; }
-  .doc-status { font-size: .67rem; color: var(--gris); transition: color .2s; }
-  .doc-card.done .doc-status { color: var(--exito); }
+  .acepta-wrap{display:flex;align-items:flex-start;gap:11px;background:var(--hielo);border:1px solid var(--borde);border-radius:10px;padding:14px 16px}
+  .acepta-wrap input[type="checkbox"]{margin-top:2px;accent-color:var(--azul-noor);width:16px;height:16px;flex-shrink:0;cursor:pointer}
+  .acepta-wrap label{font-size:.77rem;color:var(--texto);line-height:1.55;cursor:pointer}
 
-  /* ── RESUMEN ── */
-  .resumen-box {
-    background: var(--azul-hielo);
-    border: 1px solid var(--borde);
-    border-radius: 12px;
-    padding: 22px 24px;
-    margin-bottom: 20px;
-  }
-  .resumen-box h4 {
-    font-size: .68rem; font-weight: 700; letter-spacing: .8px; text-transform: uppercase;
-    color: var(--gris); margin-bottom: 14px;
-  }
-  .r-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 8px 0; border-bottom: 1px solid var(--borde);
-    font-size: .81rem;
-  }
-  .r-row:last-child { border-bottom: none; }
-  .r-key { color: var(--gris); }
-  .r-val { color: var(--texto); font-weight: 500; max-width: 55%; text-align: right; }
-  .ok-mark { color: var(--exito); }
-  .warn-mark { color: #e67e22; }
+  .form-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:var(--hielo);border-top:1px solid var(--borde)}
+  .btn{font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;padding:11px 26px;border-radius:9px;border:none;cursor:pointer;transition:all .2s}
+  .btn-primary{background:var(--azul-noor);color:#fff}
+  .btn-primary:hover{background:var(--azul-m);transform:translateY(-1px);box-shadow:0 4px 18px rgba(10,45,110,.28)}
+  .btn-ghost{background:transparent;color:var(--gris);border:1.5px solid var(--borde)}
+  .btn-ghost:hover{border-color:var(--azul-c);color:var(--azul-c)}
+  .btn-send{background:linear-gradient(135deg,var(--dorado),var(--dorado-d));color:#fff}
+  .btn-send:hover{transform:translateY(-1px);box-shadow:0 4px 18px rgba(160,117,53,.38)}
+  .btn:disabled{opacity:.45;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+  .nav-step{font-size:.7rem;color:var(--gris)}
 
-  .acepta-wrap {
-    display: flex; align-items: flex-start; gap: 11px;
-    background: var(--azul-hielo);
-    border: 1px solid var(--borde);
-    border-radius: 10px;
-    padding: 14px 16px;
-  }
-  .acepta-wrap input[type="checkbox"] {
-    margin-top: 2px; accent-color: var(--azul-noor);
-    width: 16px; height: 16px; flex-shrink: 0; cursor: pointer;
-  }
-  .acepta-wrap label { font-size: .77rem; color: var(--texto); line-height: 1.55; cursor: pointer; }
+  /* Loading */
+  .loading-overlay{display:none;position:fixed;inset:0;background:rgba(10,45,110,.6);backdrop-filter:blur(5px);z-index:999;align-items:center;justify-content:center;flex-direction:column;gap:16px}
+  .loading-overlay.show{display:flex}
+  .spinner{width:52px;height:52px;border:3px solid rgba(255,255,255,.2);border-top-color:var(--dorado);border-radius:50%;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .loading-overlay h3{color:#fff;font-size:1rem;font-weight:600}
+  .loading-overlay p{color:rgba(255,255,255,.7);font-size:.8rem;max-width:300px;text-align:center;line-height:1.5}
+  .loading-steps{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+  .lstep{font-size:.75rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:8px;transition:all .3s}
+  .lstep.active{color:#fff}
+  .lstep.done{color:rgba(100,220,140,.9)}
+  .lstep .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);flex-shrink:0;transition:all .3s}
+  .lstep.active .dot{background:var(--dorado);box-shadow:0 0 8px var(--dorado)}
+  .lstep.done .dot{background:#64dc8c}
 
-  /* ── NAV ── */
-  .form-nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 18px 48px;
-    background: var(--azul-hielo);
-    border-top: 1px solid var(--borde);
-  }
-  .btn {
-    font-family: 'DM Sans', sans-serif;
-    font-size: .78rem; font-weight: 700;
-    letter-spacing: .6px; text-transform: uppercase;
-    padding: 11px 26px; border-radius: 9px;
-    border: none; cursor: pointer; transition: all .2s;
-  }
-  .btn-primary { background: var(--azul-noor); color: #fff; }
-  .btn-primary:hover { background: var(--azul-medio); transform: translateY(-1px); box-shadow: 0 4px 18px rgba(10,45,110,.28); }
-  .btn-ghost { background: transparent; color: var(--gris); border: 1.5px solid var(--borde); }
-  .btn-ghost:hover { border-color: var(--azul-claro); color: var(--azul-claro); }
-  .btn-send { background: linear-gradient(135deg, var(--dorado), var(--dorado-dark)); color: #fff; }
-  .btn-send:hover { transform: translateY(-1px); box-shadow: 0 4px 18px rgba(160,117,53,.38); }
-  .btn:disabled { opacity: .45; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
-  .nav-step { font-size: .7rem; color: var(--gris); letter-spacing: .3px; }
+  /* Éxito */
+  .success-screen{display:none;padding:52px 48px;text-align:center;animation:upIn .5s ease}
+  .success-screen.show{display:block}
+  .success-icon{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--azul-noor),var(--azul-c));display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:2rem;box-shadow:0 10px 36px rgba(10,45,110,.28)}
+  .success-screen h2{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:500;color:var(--azul-noor);margin-bottom:10px}
+  .success-screen p{font-size:.87rem;color:var(--gris);max-width:440px;margin:0 auto 28px;line-height:1.65}
+  .folio-badge{display:inline-block;background:var(--hielo);border:1.5px solid var(--borde);border-radius:10px;padding:12px 32px;margin-bottom:24px}
+  .folio-badge span{display:block;font-size:.62rem;color:var(--gris);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+  .folio-badge strong{font-size:1.25rem;color:var(--azul-noor);letter-spacing:2px;font-weight:700}
+  .success-docs{background:var(--hielo);border-radius:12px;border:1px solid var(--borde);padding:20px 24px;text-align:left;max-width:460px;margin:0 auto}
+  .success-docs h4{font-size:.68rem;text-transform:uppercase;letter-spacing:.7px;color:var(--gris);margin-bottom:12px;font-weight:700}
+  .doc-result{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--borde);font-size:.78rem}
+  .doc-result:last-child{border-bottom:none}
+  .doc-result a{color:var(--azul-c);font-size:.72rem;text-decoration:none;font-weight:600}
+  .doc-result a:hover{text-decoration:underline}
+  .doc-ok{color:var(--exito);font-weight:600;font-size:.8rem}
 
-  /* ── LOADING ── */
-  .loading-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(10,45,110,.55); backdrop-filter: blur(4px);
-    z-index: 999; align-items: center; justify-content: center;
-    flex-direction: column; gap: 16px;
-  }
-  .loading-overlay.show { display: flex; }
-  .spinner {
-    width: 48px; height: 48px;
-    border: 3px solid rgba(255,255,255,.2);
-    border-top-color: var(--dorado);
-    border-radius: 50%;
-    animation: spin .8s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .loading-overlay p { color: #fff; font-size: .85rem; letter-spacing: .5px; }
+  footer{text-align:center;padding:22px;font-size:.7rem;color:var(--gris)}
+  footer strong{color:var(--azul-noor)}
 
-  /* ── ÉXITO ── */
-  .success-screen {
-    display: none; padding: 56px 48px;
-    text-align: center; animation: upIn .5s ease;
-  }
-  .success-screen.show { display: block; }
-  .success-icon {
-    width: 80px; height: 80px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--azul-noor), var(--azul-claro));
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 22px;
-    font-size: 2rem;
-    box-shadow: 0 10px 36px rgba(10,45,110,.28);
-  }
-  .success-screen h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.1rem; font-weight: 500; color: var(--azul-noor); margin-bottom: 10px;
-  }
-  .success-screen p { font-size: .87rem; color: var(--gris); max-width: 430px; margin: 0 auto 28px; line-height: 1.65; }
-  .folio-badge {
-    display: inline-block;
-    background: var(--azul-hielo); border: 1.5px solid var(--borde);
-    border-radius: 10px; padding: 12px 32px; margin-bottom: 28px;
-  }
-  .folio-badge span { display: block; font-size: .62rem; color: var(--gris); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
-  .folio-badge strong { font-size: 1.25rem; color: var(--azul-noor); letter-spacing: 2px; font-weight: 700; }
-
-  .success-checks {
-    background: var(--azul-hielo); border-radius: 12px;
-    border: 1px solid var(--borde);
-    padding: 20px 24px; text-align: left; max-width: 400px; margin: 0 auto;
-  }
-  .success-checks h4 { font-size: .68rem; text-transform: uppercase; letter-spacing: .7px; color: var(--gris); margin-bottom: 12px; font-weight: 700; }
-  .ck { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--borde); font-size: .8rem; }
-  .ck:last-child { border-bottom: none; }
-  .ck .ck-ok { color: var(--exito); font-weight: 600; }
-
-  /* ── ERROR SCREEN ── */
-  .error-screen {
-    display: none; padding: 48px;
-    text-align: center; animation: upIn .4s ease;
-  }
-  .error-screen.show { display: block; }
-  .error-screen h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; color: var(--error); margin-bottom: 10px; }
-  .error-screen p { font-size: .84rem; color: var(--gris); max-width: 420px; margin: 0 auto 24px; line-height: 1.6; }
-
-  /* ── FOOTER ── */
-  footer { text-align: center; padding: 22px; font-size: .7rem; color: var(--gris); }
-  footer strong { color: var(--azul-noor); }
-
-  @media (max-width: 640px) {
-    .header-inner { padding: 22px 20px; gap: 14px; }
-    .header-pill  { display: none; }
-    .section      { padding: 26px 20px; }
-    .form-nav     { padding: 14px 20px; }
-    .grid, .docs-grid { grid-template-columns: 1fr; }
-    .success-screen { padding: 36px 20px; }
+  @media(max-width:640px){
+    .header-inner{padding:22px 20px;gap:14px}
+    .header-pill{display:none}
+    .section{padding:26px 20px}
+    .form-nav{padding:14px 20px}
+    .grid,.docs-grid{grid-template-columns:1fr}
+    .success-screen{padding:36px 20px}
   }
 </style>
 </head>
 <body>
 
-<!-- LOADING -->
+<!-- LOADING OVERLAY -->
 <div class="loading-overlay" id="loading">
   <div class="spinner"></div>
-  <p>Enviando tu información a Noor Clinic…</p>
+  <h3>Procesando tu solicitud…</h3>
+  <p id="loadingMsg">Preparando el envío</p>
+  <div class="loading-steps">
+    <div class="lstep" id="ls1"><div class="dot"></div>Enviando datos del médico</div>
+    <div class="lstep" id="ls2"><div class="dot"></div>Subiendo documentos a Drive</div>
+    <div class="lstep" id="ls3"><div class="dot"></div>Registrando en base de datos</div>
+    <div class="lstep" id="ls4"><div class="dot"></div>Enviando correo de confirmación</div>
+  </div>
 </div>
 
 <!-- HEADER -->
 <header>
   <div class="header-inner">
     <div class="logo-mark">
-      <!-- Ícono médico/hospital -->
       <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="14" y="2" width="8" height="32" rx="2" fill="rgba(255,255,255,0.9)"/>
         <rect x="2" y="14" width="32" height="8" rx="2" fill="rgba(255,255,255,0.9)"/>
@@ -415,7 +192,7 @@
     </div>
     <div class="header-pill">
       <span>Expediente Digital</span>
-      <strong>2025 · v2.0</strong>
+      <strong>2025 · v3.0</strong>
     </div>
   </div>
 </header>
@@ -433,7 +210,7 @@
 <main>
 <div class="card">
 
-  <!-- ══ PASO 1 ══ -->
+  <!-- PASO 1 -->
   <div class="section active" id="s1">
     <div class="sec-header">
       <h2>Datos Personales</h2>
@@ -442,8 +219,7 @@
     <div class="grid">
       <div class="field col-2">
         <label>Nombre completo <span class="req">*</span></label>
-        <input type="text" id="f_nombre" placeholder="Dr. Juan Alberto Ramírez Soto"
-               autocomplete="name" oninput="chk(this,'nombre')">
+        <input type="text" id="f_nombre" placeholder="Dr. Juan Alberto Ramírez Soto" autocomplete="name" oninput="chk(this,'nombre')">
         <span class="errtxt">Escribe el nombre completo (mín. 5 caracteres).</span>
       </div>
       <div class="field">
@@ -453,14 +229,12 @@
       </div>
       <div class="field">
         <label>Correo electrónico <span class="req">*</span></label>
-        <input type="email" id="f_email" placeholder="medico@correo.com"
-               autocomplete="email" oninput="chk(this,'email')">
+        <input type="email" id="f_email" placeholder="medico@correo.com" autocomplete="email" oninput="chk(this,'email')">
         <span class="errtxt">Correo electrónico inválido.</span>
       </div>
       <div class="field">
         <label>Teléfono de contacto</label>
         <input type="tel" id="f_tel" placeholder="55 1234 5678" maxlength="15">
-        <span class="hint">Opcional — 10 dígitos</span>
       </div>
       <div class="field">
         <label>Ciudad / Estado</label>
@@ -469,15 +243,13 @@
     </div>
   </div>
 
-  <!-- ══ PASO 2 ══ -->
+  <!-- PASO 2 -->
   <div class="section" id="s2">
     <div class="sec-header">
       <h2>Datos Profesionales</h2>
       <p>Información de cédulas, especialidad y adscripción al hospital.</p>
     </div>
-    <div class="infobox">
-      📋 Verifica que los números de cédula coincidan exactamente con tus documentos de la SEP y del Consejo de Especialidad.
-    </div>
+    <div class="infobox">📋 Verifica que los números de cédula coincidan exactamente con tus documentos de la SEP.</div>
     <div class="grid">
       <div class="field col-2">
         <label>Especialidad médica <span class="req">*</span></label>
@@ -497,20 +269,19 @@
           <option>Radiología e Imagen</option><option>Reumatología</option>
           <option>Urología</option><option>Otra especialidad</option>
         </select>
+        <span class="errtxt">Selecciona una especialidad.</span>
       </div>
       <div class="field">
-        <label>Cédula profesional (médico gral.) <span class="req">*</span></label>
-        <input type="text" id="f_ced_prof" placeholder="12345678" maxlength="12"
-               oninput="chk(this,'cedula')">
+        <label>Cédula profesional <span class="req">*</span></label>
+        <input type="text" id="f_ced_prof" placeholder="12345678" maxlength="12" oninput="chk(this,'cedula')">
         <span class="hint">Número SEP — medicina general</span>
-        <span class="errtxt">Cédula inválida (mín. 6 dígitos).</span>
+        <span class="errtxt">Mín. 6 dígitos.</span>
       </div>
       <div class="field">
         <label>Cédula de especialidad <span class="req">*</span></label>
-        <input type="text" id="f_ced_esp" placeholder="87654321" maxlength="12"
-               oninput="chk(this,'cedula')">
+        <input type="text" id="f_ced_esp" placeholder="87654321" maxlength="12" oninput="chk(this,'cedula')">
         <span class="hint">Número SEP — especialidad</span>
-        <span class="errtxt">Cédula inválida (mín. 6 dígitos).</span>
+        <span class="errtxt">Mín. 6 dígitos.</span>
       </div>
       <div class="field">
         <label>Tipo de adscripción <span class="req">*</span></label>
@@ -523,99 +294,96 @@
         </select>
       </div>
       <div class="field">
-        <label>Institución (título / especialidad)</label>
+        <label>Institución</label>
         <input type="text" id="f_inst" placeholder="UNAM, IPN, Tec de Monterrey…">
       </div>
       <div class="field">
-        <label>Vigencia — Certificado de especialidad</label>
+        <label>Vigencia — Certificado especialidad</label>
         <input type="date" id="f_vig_cert">
-        <span class="hint">Fecha de vencimiento del certificado</span>
       </div>
       <div class="field">
-        <label>Vigencia — Póliza de Resp. Civil</label>
+        <label>Vigencia — Póliza Resp. Civil</label>
         <input type="date" id="f_vig_poliza">
-        <span class="hint">Fecha de vencimiento de la póliza</span>
       </div>
       <div class="field">
-        <label>Aseguradora (Resp. Civil)</label>
+        <label>Aseguradora</label>
         <input type="text" id="f_aseg" placeholder="GNP, AXA, Mapfre, HDI…">
       </div>
     </div>
   </div>
 
-  <!-- ══ PASO 3 ══ -->
+  <!-- PASO 3 -->
   <div class="section" id="s3">
     <div class="sec-header">
       <h2>Carga de Documentos</h2>
-      <p>Adjunta los 6 documentos obligatorios. Formatos: PDF, JPG o PNG · Máx. 10 MB c/u.</p>
+      <p>Los archivos se subirán directamente a Google Drive de Noor Clinic al enviar el formulario.</p>
     </div>
-    <div class="infobox">
-      🔒 Tus archivos se almacenan de forma segura en Google Drive de Noor Clinic y solo el personal de Credencialización tendrá acceso.
-    </div>
+    <div class="infobox">🔒 Cada médico tendrá su propia carpeta privada en Drive. Los links quedarán registrados en la base de datos y recibirás un correo con acceso a todos los documentos.</div>
     <div class="docs-grid">
       <div class="doc-card" id="dc1">
-        <input type="file" accept=".pdf,.jpg,.jpeg,.png" id="doc_ine"
-               onchange="markDoc('dc1','dst1',this)">
+        <input type="file" accept=".pdf,.jpg,.jpeg,.png" id="doc_ine" onchange="prepararDoc('dc1','dst1','pb1',this,'INE')">
         <span class="doc-icon">🪪</span>
         <div class="doc-tag">Obligatorio</div>
         <p class="doc-name">Copia de INE<br>(Anverso y Reverso)</p>
         <span class="doc-status" id="dst1">Toca para seleccionar</span>
+        <div class="doc-progress"><div class="doc-progress-bar" id="pb1"></div></div>
       </div>
       <div class="doc-card" id="dc2">
-        <input type="file" accept=".pdf,.jpg,.jpeg,.png" id="doc_ced_prof"
-               onchange="markDoc('dc2','dst2',this)">
+        <input type="file" accept=".pdf,.jpg,.jpeg,.png" id="doc_ced_prof" onchange="prepararDoc('dc2','dst2','pb2',this,'Cedula_Profesional')">
         <span class="doc-icon">🎓</span>
         <div class="doc-tag">Obligatorio</div>
         <p class="doc-name">Cédula Profesional<br>(Médico General)</p>
         <span class="doc-status" id="dst2">Toca para seleccionar</span>
+        <div class="doc-progress"><div class="doc-progress-bar" id="pb2"></div></div>
       </div>
       <div class="doc-card" id="dc3">
-        <input type="file" accept=".pdf,.jpg,.jpeg,.png" id="doc_ced_esp"
-               onchange="markDoc('dc3','dst3',this)">
+        <input type="file" accept=".pdf,.jpg,.jpeg,.png" id="doc_ced_esp" onchange="prepararDoc('dc3','dst3','pb3',this,'Cedula_Especialidad')">
         <span class="doc-icon">📜</span>
         <div class="doc-tag">Obligatorio</div>
         <p class="doc-name">Cédula de Especialidad<br>(SEP)</p>
         <span class="doc-status" id="dst3">Toca para seleccionar</span>
+        <div class="doc-progress"><div class="doc-progress-bar" id="pb3"></div></div>
       </div>
       <div class="doc-card" id="dc4">
-        <input type="file" accept=".pdf,.jpg,.jpeg,.png" id="doc_cert"
-               onchange="markDoc('dc4','dst4',this)">
+        <input type="file" accept=".pdf,.jpg,.jpeg,.png" id="doc_cert" onchange="prepararDoc('dc4','dst4','pb4',this,'Certificado_Especialidad')">
         <span class="doc-icon">🏅</span>
         <div class="doc-tag req-live">Obligatorio · Vigente</div>
         <p class="doc-name">Certificado de<br>Especialidad (Vigente)</p>
         <span class="doc-status" id="dst4">Toca para seleccionar</span>
+        <div class="doc-progress"><div class="doc-progress-bar" id="pb4"></div></div>
       </div>
       <div class="doc-card" id="dc5">
-        <input type="file" accept=".pdf,.jpg,.jpeg,.png" id="doc_poliza"
-               onchange="markDoc('dc5','dst5',this)">
+        <input type="file" accept=".pdf,.jpg,.jpeg,.png" id="doc_poliza" onchange="prepararDoc('dc5','dst5','pb5',this,'Poliza_Resp_Civil')">
         <span class="doc-icon">🛡️</span>
         <div class="doc-tag req-live">Obligatorio · Vigente</div>
-        <p class="doc-name">Póliza de Responsabilidad<br>Civil (Vigente)</p>
+        <p class="doc-name">Póliza de Resp. Civil<br>(Vigente)</p>
         <span class="doc-status" id="dst5">Toca para seleccionar</span>
+        <div class="doc-progress"><div class="doc-progress-bar" id="pb5"></div></div>
       </div>
       <div class="doc-card" id="dc6">
-        <input type="file" accept=".pdf,.jpg,.jpeg,.png" id="doc_fiscal"
-               onchange="markDoc('dc6','dst6',this)">
+        <input type="file" accept=".pdf,.jpg,.jpeg,.png" id="doc_fiscal" onchange="prepararDoc('dc6','dst6','pb6',this,'Constancia_Fiscal')">
         <span class="doc-icon">🧾</span>
         <div class="doc-tag req-live">Obligatorio · Actualizada</div>
-        <p class="doc-name">Constancia de Situación<br>Fiscal (SAT · Actualizada)</p>
+        <p class="doc-name">Constancia de Situación<br>Fiscal (SAT)</p>
         <span class="doc-status" id="dst6">Toca para seleccionar</span>
+        <div class="doc-progress"><div class="doc-progress-bar" id="pb6"></div></div>
       </div>
     </div>
     <div class="divider"></div>
     <p style="font-size:.72rem;color:var(--gris);line-height:1.7;">
-      <strong style="color:var(--azul-noor);">Nota:</strong> Los documentos se enviarán junto con tus datos al momento de hacer clic en <em>"Enviar Solicitud"</em>.
-      Los nombres de los archivos se registrarán automáticamente en la base de datos del hospital.
+      <strong style="color:var(--azul-noor);">Formatos aceptados:</strong> PDF, JPG, PNG &nbsp;·&nbsp;
+      <strong style="color:var(--azul-noor);">Tamaño máximo:</strong> 10 MB por archivo &nbsp;·&nbsp;
+      Los archivos se suben al momento de enviar el formulario.
     </p>
   </div>
 
-  <!-- ══ PASO 4 ══ -->
+  <!-- PASO 4 -->
   <div class="section" id="s4">
     <div class="sec-header">
       <h2>Confirmación y Envío</h2>
-      <p>Revisa tu información. Al enviar, los datos se registrarán automáticamente en la base de datos del hospital.</p>
+      <p>Al enviar, los archivos se subirán a Drive y los datos se registrarán en la base de datos.</p>
     </div>
-    <div class="resumen-box" id="resumen">
+    <div class="resumen-box">
       <h4>Resumen del Expediente</h4>
       <div class="r-row"><span class="r-key">Nombre completo</span><span class="r-val" id="r_nombre">—</span></div>
       <div class="r-row"><span class="r-key">Fecha de nacimiento</span><span class="r-val" id="r_fnac">—</span></div>
@@ -623,44 +391,29 @@
       <div class="r-row"><span class="r-key">Especialidad</span><span class="r-val" id="r_esp">—</span></div>
       <div class="r-row"><span class="r-key">Cédula profesional</span><span class="r-val" id="r_ced">—</span></div>
       <div class="r-row"><span class="r-key">Cédula especialidad</span><span class="r-val" id="r_cedesp">—</span></div>
-      <div class="r-row"><span class="r-key">Documentos adjuntos</span><span class="r-val" id="r_docs">—</span></div>
+      <div class="r-row"><span class="r-key">Documentos seleccionados</span><span class="r-val" id="r_docs">—</span></div>
     </div>
     <div class="acepta-wrap">
       <input type="checkbox" id="acepta">
-      <label for="acepta">
-        Declaro que la información y documentos son <strong>auténticos, vigentes y completos</strong>.
-        Autorizo a <strong>Noor Clinic</strong> a resguardar mis datos conforme a la
-        <em>Ley Federal de Protección de Datos Personales (LFPDPPP)</em>.
-      </label>
+      <label for="acepta">Declaro que la información y documentos son <strong>auténticos, vigentes y completos</strong>. Autorizo a <strong>Noor Clinic</strong> a resguardar mis datos conforme a la <em>LFPDPPP</em>.</label>
     </div>
   </div>
 
-  <!-- ══ ÉXITO ══ -->
+  <!-- ÉXITO -->
   <div class="success-screen" id="success">
     <div class="success-icon">✅</div>
-    <h2>¡Solicitud Enviada!</h2>
-    <p>Tu expediente ha sido registrado en la base de datos de Noor Clinic. El equipo de Credencialización lo revisará y te contactará en <strong>3 a 5 días hábiles</strong>.</p>
+    <h2>¡Expediente Completo!</h2>
+    <p>Tus documentos han sido subidos a Drive y tus datos quedan registrados. El equipo de Credencialización recibirá un correo y te contactará en <strong>3 a 5 días hábiles</strong>.</p>
     <div class="folio-badge">
       <span>Número de Folio</span>
       <strong id="folio_show">NC-2025-0000</strong>
     </div>
-    <div class="success-checks">
-      <h4>Documentos recibidos</h4>
-      <div class="ck"><span>Copia de INE</span><span class="ck-ok">✓ Recibido</span></div>
-      <div class="ck"><span>Cédula Profesional</span><span class="ck-ok">✓ Recibido</span></div>
-      <div class="ck"><span>Cédula de Especialidad</span><span class="ck-ok">✓ Recibido</span></div>
-      <div class="ck"><span>Certificado de Especialidad</span><span class="ck-ok">✓ Recibido</span></div>
-      <div class="ck"><span>Póliza de Resp. Civil</span><span class="ck-ok">✓ Recibido</span></div>
-      <div class="ck"><span>Constancia Fiscal SAT</span><span class="ck-ok">✓ Recibido</span></div>
+    <div class="success-docs">
+      <h4>Documentos subidos a Drive</h4>
+      <div id="docsResultados">
+        <div class="doc-result"><span>Cargando resultados…</span></div>
+      </div>
     </div>
-  </div>
-
-  <!-- ══ ERROR ══ -->
-  <div class="error-screen" id="errorScreen">
-    <div style="font-size:2.5rem;margin-bottom:16px;">⚠️</div>
-    <h2>Error al enviar</h2>
-    <p id="errorMsg">Hubo un problema al conectar con el servidor. Por favor verifica tu conexión e intenta de nuevo.</p>
-    <button class="btn btn-primary" onclick="retrySubmit()" style="margin-top:16px;">Reintentar</button>
   </div>
 
   <!-- NAV -->
@@ -670,25 +423,27 @@
     <button class="btn btn-primary" id="btnNext" onclick="next()">Siguiente →</button>
   </div>
 
-</div><!-- .card -->
+</div>
 </main>
 
 <footer>
-  <strong>Noor Clinic</strong> · Sistema de Credencialización de Médicos · 2025<br>
-  Datos protegidos conforme a la LFPDPPP · Todos los derechos reservados
+  <strong>Noor Clinic</strong> · Sistema de Credencialización · 2025 · v3.0<br>
+  Documentos resguardados en Google Drive · Datos protegidos conforme a la LFPDPPP
 </footer>
 
 <script>
-// ─────────────────────────────────────────────
-// ⚙️  CONFIGURACIÓN — PEGA AQUÍ TU WEB APP URL
-// ─────────────────────────────────────────────
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxMSljcLWK9km8n_rNpKgMvqD20XlUSK_d4vOTb1bIq6oYQHebeJD64QLA3KYBoV3O9/exec";
-// Instrucciones para obtenerla: ver archivo GUIA_GOOGLE_SHEETS.html
-// ─────────────────────────────────────────────
+// ══════════════════════════════════════════════
+//  ⚙️  PEGA AQUÍ TU URL DE GOOGLE APPS SCRIPT
+// ══════════════════════════════════════════════
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxMSljcLWK9km8n_rNpKgMvqD20XlUSK_d4vOTb1bIq6oYQHebeJD64QLA3KYBoV3O9/exec";
+// ══════════════════════════════════════════════
 
 let step = 1;
 const TOTAL = 4;
+// Almacena los archivos como base64 para enviar al script
+const archivos = {};
 
+/* ── Navegación ── */
 function next() {
   if (!validate(step)) return;
   if (step === TOTAL) { submit(); return; }
@@ -701,7 +456,7 @@ function moveTo(n) {
   document.getElementById('s' + step)?.classList.remove('active');
   document.querySelectorAll('.s-tab').forEach(t => {
     const s = +t.dataset.s;
-    t.classList.remove('active', 'done');
+    t.classList.remove('active','done');
     if (s < n) t.classList.add('done');
     if (s === n) t.classList.add('active');
   });
@@ -710,26 +465,27 @@ function moveTo(n) {
   document.getElementById('navInfo').textContent = `Paso ${step} de ${TOTAL}`;
   document.getElementById('btnBack').style.visibility = step > 1 ? 'visible' : 'hidden';
   const nb = document.getElementById('btnNext');
-  if (step === TOTAL) { nb.textContent = 'Enviar Solicitud ✓'; nb.className = 'btn btn-send'; }
-  else                { nb.textContent = 'Siguiente →';        nb.className = 'btn btn-primary'; }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (step === TOTAL) { nb.textContent = 'Enviar y Subir Documentos ✓'; nb.className = 'btn btn-send'; }
+  else                { nb.textContent = 'Siguiente →'; nb.className = 'btn btn-primary'; }
+  window.scrollTo({ top:0, behavior:'smooth' });
 }
 
 /* ── Validación ── */
-function v(id) { return (document.getElementById(id)?.value || '').trim(); }
+function gv(id) { return (document.getElementById(id)?.value || '').trim(); }
+
 function validate(s) {
   if (s === 1) {
     let ok = true;
-    ok = require('f_nombre', n => n.length >= 5)   && ok;
-    ok = require('f_email',  n => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(n)) && ok;
-    ok = require('f_fnac',   n => n.length > 0)    && ok;
+    ok = req('f_nombre', v => v.length >= 5) && ok;
+    ok = req('f_email',  v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) && ok;
+    ok = req('f_fnac',   v => v.length > 0) && ok;
     return ok;
   }
   if (s === 2) {
     let ok = true;
-    ok = require('f_esp',      n => n.length > 0)  && ok;
-    ok = require('f_ced_prof', n => n.length >= 6) && ok;
-    ok = require('f_ced_esp',  n => n.length >= 6) && ok;
+    ok = req('f_esp',      v => v.length > 0)  && ok;
+    ok = req('f_ced_prof', v => v.length >= 6) && ok;
+    ok = req('f_ced_esp',  v => v.length >= 6) && ok;
     return ok;
   }
   if (s === 4) {
@@ -739,16 +495,16 @@ function validate(s) {
   }
   return true;
 }
-function require(id, fn) {
-  const el = document.getElementById(id);
+
+function req(id, fn) {
+  const el  = document.getElementById(id);
   const val = (el?.value || '').trim();
-  const ok = fn(val);
+  const ok  = fn(val);
   el?.classList.toggle('err', !ok);
   el?.classList.toggle('ok',  ok && val.length > 0);
   return ok;
 }
 
-/* ── Validación en tiempo real ── */
 function chk(el, type) {
   const v = el.value.trim();
   let ok = false;
@@ -760,120 +516,170 @@ function chk(el, type) {
   el.classList.toggle('ok',  ok);
 }
 
-/* ── Documentos ── */
-function markDoc(cardId, statusId, input) {
+/* ── Preparar documento (lee como base64) ── */
+function prepararDoc(cardId, statusId, pbId, input, nombreClave) {
   const file = input.files[0];
   if (!file) return;
   if (file.size > 10 * 1024 * 1024) {
-    document.getElementById(statusId).textContent = '⚠ Archivo muy grande (máx. 10 MB)';
-    input.value = ''; return;
+    document.getElementById(statusId).textContent = '⚠ Muy grande (máx. 10 MB)';
+    input.value = '';
+    return;
   }
-  document.getElementById(cardId).classList.add('done');
-  const kb = (file.size / 1024).toFixed(0);
-  const name = file.name.length > 24 ? file.name.substring(0, 22) + '…' : file.name;
-  document.getElementById(statusId).textContent = `✓ ${name} (${kb} KB)`;
+
+  const card = document.getElementById(cardId);
+  card.classList.add('uploading');
+  document.getElementById(statusId).textContent = 'Leyendo archivo…';
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    // Guardar base64 (sin el prefijo "data:...;base64,")
+    const base64 = e.target.result.split(',')[1];
+    archivos[nombreClave] = {
+      nombre:   file.name,
+      tipo:     file.type,
+      base64:   base64,
+      tamano:   file.size
+    };
+    card.classList.remove('uploading');
+    card.classList.add('done');
+    const kb = (file.size / 1024).toFixed(0);
+    const n  = file.name.length > 22 ? file.name.substring(0,20) + '…' : file.name;
+    document.getElementById(statusId).textContent = `✓ ${n} (${kb} KB)`;
+  };
+  reader.onprogress = function(e) {
+    if (e.lengthComputable) {
+      const pct = Math.round((e.loaded / e.total) * 100);
+      document.getElementById(pbId).style.width = pct + '%';
+    }
+  };
+  reader.readAsDataURL(file);
 }
 
 /* ── Resumen ── */
 function buildResumen() {
-  const fmt = id => v(id) || '—';
-  document.getElementById('r_nombre').textContent  = fmt('f_nombre');
-  document.getElementById('r_email').textContent   = fmt('f_email');
+  document.getElementById('r_nombre').textContent  = gv('f_nombre')   || '—';
+  document.getElementById('r_email').textContent   = gv('f_email')    || '—';
   document.getElementById('r_esp').textContent     = document.getElementById('f_esp')?.value || '—';
-  document.getElementById('r_ced').textContent     = fmt('f_ced_prof');
-  document.getElementById('r_cedesp').textContent  = fmt('f_ced_esp');
-  const fn = v('f_fnac');
+  document.getElementById('r_ced').textContent     = gv('f_ced_prof') || '—';
+  document.getElementById('r_cedesp').textContent  = gv('f_ced_esp')  || '—';
+  const fn = gv('f_fnac');
   document.getElementById('r_fnac').textContent    = fn ? fn.split('-').reverse().join('/') : '—';
-  const n = [1,2,3,4,5,6].filter(i => document.getElementById('dc'+i)?.classList.contains('done')).length;
-  const el = document.getElementById('r_docs');
-  el.innerHTML = n === 6
-    ? `<span class="ok-mark">✓ 6/6 documentos adjuntos</span>`
-    : `<span class="warn-mark">⚠ ${n}/6 documentos adjuntos</span>`;
+  const n = Object.keys(archivos).length;
+  document.getElementById('r_docs').innerHTML = n === 6
+    ? `<span style="color:var(--exito)">✓ 6/6 documentos listos para subir</span>`
+    : `<span style="color:#e67e22">⚠ ${n}/6 documentos seleccionados</span>`;
 }
 
-/* ── Envío a Google Sheets ── */
-async function submit() {
-  document.getElementById('loading').classList.add('show');
-
-  const folio = 'NC-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
-  const ahora = new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' });
-
-  // Recopilar nombres de archivos adjuntos
-  const docNames = {
-    ine:           document.getElementById('doc_ine')?.files[0]?.name      || 'No adjunto',
-    cedula_prof:   document.getElementById('doc_ced_prof')?.files[0]?.name || 'No adjunto',
-    cedula_esp:    document.getElementById('doc_ced_esp')?.files[0]?.name  || 'No adjunto',
-    certificado:   document.getElementById('doc_cert')?.files[0]?.name     || 'No adjunto',
-    poliza_rc:     document.getElementById('doc_poliza')?.files[0]?.name   || 'No adjunto',
-    const_fiscal:  document.getElementById('doc_fiscal')?.files[0]?.name   || 'No adjunto',
-  };
-
-  const payload = {
-    folio,
-    fecha_registro:   ahora,
-    nombre_completo:  v('f_nombre'),
-    fecha_nacimiento: v('f_fnac'),
-    email:            v('f_email'),
-    telefono:         v('f_tel'),
-    ciudad:           v('f_ciudad'),
-    especialidad:     document.getElementById('f_esp')?.value   || '',
-    cedula_prof:      v('f_ced_prof'),
-    cedula_esp:       v('f_ced_esp'),
-    institucion:      v('f_inst'),
-    adscripcion:      document.getElementById('f_adscripcion')?.value || '',
-    vigencia_cert:    v('f_vig_cert'),
-    vigencia_poliza:  v('f_vig_poliza'),
-    aseguradora:      v('f_aseg'),
-    estado:           'Pendiente',
-    doc_ine:          docNames.ine,
-    doc_cedula_prof:  docNames.cedula_prof,
-    doc_cedula_esp:   docNames.cedula_esp,
-    doc_certificado:  docNames.certificado,
-    doc_poliza:       docNames.poliza_rc,
-    doc_fiscal:       docNames.const_fiscal,
-  };
-
-  try {
-    const resp = await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',             // requerido por Google Apps Script
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify(payload)
-    });
-
-    // no-cors no devuelve cuerpo; asumimos éxito si no hay excepción
-    document.getElementById('loading').classList.remove('show');
-    showSuccess(folio);
-
-  } catch (err) {
-    document.getElementById('loading').classList.remove('show');
-    showError('No se pudo conectar con el servidor. Verifica tu conexión a internet e inténtalo de nuevo.');
-    console.error(err);
+/* ── Loading steps ── */
+function setStep(n) {
+  for (let i = 1; i <= 4; i++) {
+    const el = document.getElementById('ls' + i);
+    el.classList.remove('active','done');
+    if (i < n)  el.classList.add('done');
+    if (i === n) el.classList.add('active');
   }
 }
 
-function retrySubmit() {
-  document.getElementById('errorScreen').classList.remove('show');
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById('s' + step).classList.add('active');
-  document.getElementById('fnav').style.display = '';
+/* ══════════════════════════════════════════════
+   ENVÍO PRINCIPAL — base64 a Apps Script
+   El script sube cada archivo a Drive y devuelve los links
+   ══════════════════════════════════════════════ */
+async function submit() {
+  document.getElementById('loading').classList.add('show');
+  document.getElementById('fnav').style.display = 'none';
+
+  const folio = 'NC-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000);
+  const ahora = new Date().toLocaleString('es-MX', { timeZone:'America/Mexico_City' });
+
+  setStep(1);
+  document.getElementById('loadingMsg').textContent = 'Preparando datos…';
+
+  const payload = {
+    accion:           'registrar_medico',
+    folio:             folio,
+    fecha_registro:    ahora,
+    nombre_completo:   gv('f_nombre'),
+    fecha_nacimiento:  gv('f_fnac'),
+    email:             gv('f_email'),
+    telefono:          gv('f_tel'),
+    ciudad:            gv('f_ciudad'),
+    especialidad:      document.getElementById('f_esp')?.value || '',
+    cedula_prof:       gv('f_ced_prof'),
+    cedula_esp:        gv('f_ced_esp'),
+    institucion:       gv('f_inst'),
+    adscripcion:       document.getElementById('f_adscripcion')?.value || '',
+    vigencia_cert:     gv('f_vig_cert'),
+    vigencia_poliza:   gv('f_vig_poliza'),
+    aseguradora:       gv('f_aseg'),
+    estado:            'Pendiente',
+    archivos:          archivos   // objeto con los 6 archivos en base64
+  };
+
+  try {
+    setStep(2);
+    document.getElementById('loadingMsg').textContent = 'Subiendo documentos a Drive…';
+
+    const resp = await fetch(SCRIPT_URL, {
+      method:  'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body:    JSON.stringify(payload)
+    });
+
+    setStep(3);
+    document.getElementById('loadingMsg').textContent = 'Registrando en base de datos…';
+
+    const resultado = await resp.json();
+
+    setStep(4);
+    document.getElementById('loadingMsg').textContent = 'Enviando correo de confirmación…';
+
+    await new Promise(r => setTimeout(r, 1200));
+
+    document.getElementById('loading').classList.remove('show');
+
+    if (resultado.status === 'ok') {
+      mostrarExito(folio, resultado.links || {});
+    } else {
+      alert('Hubo un error: ' + (resultado.msg || 'Error desconocido'));
+      document.getElementById('fnav').style.display = '';
+    }
+
+  } catch(err) {
+    document.getElementById('loading').classList.remove('show');
+    document.getElementById('fnav').style.display = '';
+    alert('Error de conexión. Asegúrate de que el formulario está en GitHub Pages (no como archivo local).\n\nDetalle: ' + err.message);
+  }
 }
 
-function showSuccess(folio) {
+function mostrarExito(folio, links) {
   document.getElementById('folio_show').textContent = folio;
+
+  // Construir lista de documentos con links de Drive
+  const docNames = {
+    'INE':                   '🪪 Copia de INE',
+    'Cedula_Profesional':    '🎓 Cédula Profesional',
+    'Cedula_Especialidad':   '📜 Cédula de Especialidad',
+    'Certificado_Especialidad': '🏅 Certificado de Especialidad',
+    'Poliza_Resp_Civil':     '🛡️ Póliza de Resp. Civil',
+    'Constancia_Fiscal':     '🧾 Constancia Fiscal SAT',
+  };
+
+  let html = '';
+  for (const [clave, nombre] of Object.entries(docNames)) {
+    const link = links[clave];
+    html += `<div class="doc-result">
+      <span>${nombre}</span>
+      ${link
+        ? `<a href="${link}" target="_blank">Ver en Drive ↗</a>`
+        : `<span class="doc-ok">✓ Subido</span>`}
+    </div>`;
+  }
+  document.getElementById('docsResultados').innerHTML = html;
+
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById('success').classList.add('show');
-  document.getElementById('fnav').style.display = 'none';
   document.querySelectorAll('.s-tab').forEach(t => t.classList.add('done'));
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function showError(msg) {
-  document.getElementById('errorMsg').textContent = msg;
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById('errorScreen').classList.add('show');
-  document.getElementById('fnav').style.display = 'none';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top:0, behavior:'smooth' });
 }
 </script>
 </body>
